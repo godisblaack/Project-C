@@ -20,7 +20,7 @@ char checkInput(char c, int i) {
     if (strlen(buffer) > 1) {
         printf("\nInvalid input!\n");
         printf("\nNerd, enter a valid input.\n");
-        while (((i = getchar()) != '\n') && i != EOF);
+
         if(i == 1) {
             return 1;
         } else {
@@ -111,11 +111,14 @@ int main() {
     printf("\nNow you have 2 choices:\n\n1. To restart enter 'r'.\n\n2. To exit enter 'e'.\n\nEnter your choice: ");
     scanf(" %c", &c);
 
-    int i = 0;
+    int i;
 
-    i = checkInput(c, 2);
+    while (((i = getchar()) != '\n') && i != EOF) { // Checks if there is any more character(s) in the input buffer
+        printf("\nInvalid input!\n");
+        printf("\nNerd, enter a valid input.\n");
 
-    if (i ==2) {
+        while (((i = getchar()) != '\n') && i != EOF); // Clear the input buffer
+
         goto invalid1;
     }
 
