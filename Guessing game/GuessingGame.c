@@ -77,7 +77,7 @@ int main() {
 
     char c;
     invalid1:
-    printf("\nNow you have 2 choices:\nTo restart enter 'r'.\nTo exit enter 'e'.\nEnter your choice: ");
+    printf("\nNow you have 2 choices:\n\nTo restart enter 'r'.\n\nTo exit enter 'e'.\n\nEnter your choice: ");
     scanf(" %c", &c);
 
     if (c == 'r') {
