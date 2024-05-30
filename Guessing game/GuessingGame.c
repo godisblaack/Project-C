@@ -12,6 +12,20 @@ int isNumber(char* str) {
     return 1;
 }
 
+char checkInput(char c, int i) {
+    char buffer[3];
+    fgets(buffer, 3, stdin); // Read the rest of the line
+    if (strlen(buffer) > 1) { // If there are more characters
+        printf("\nInvalid input!\n");
+        printf("\nNerd, enter a valid input.\n");
+        if(i == 1) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+}
+
 int main() {
     
     srand(time(NULL));
@@ -49,12 +63,18 @@ int main() {
         }
         
 
-        if (numberOfGuess % 20 == 0) {
+        if (numberOfGuess % 2 == 0) {
             
             char c;
             invalid2:
             printf("\nDo you accept defeat? (y/n): ");
             scanf(" %c", &c);
+
+            int i = 0;
+            i = checkInput(c, 2);
+            if (i ==2) {
+                goto invalid2;
+            }
 
             if (c == 'n') {
                 goto goOn;
@@ -79,6 +99,12 @@ int main() {
     invalid1:
     printf("\nNow you have 2 choices:\n\nTo restart enter 'r'.\n\nTo exit enter 'e'.\n\nEnter your choice: ");
     scanf(" %c", &c);
+
+    int i = 0;
+    i = checkInput(c, 1);
+    if(i == 1) {
+        goto invalid1;
+    }
 
     if (c == 'r') {
         goto restart;
