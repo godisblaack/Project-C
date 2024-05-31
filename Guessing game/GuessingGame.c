@@ -4,13 +4,17 @@
 #include <time.h>
 
 int isNumber(char* str) {
-  for(int i = 0; i < strlen(str); i++) {
-    if(str[i] < '0' || str[i] > '9') {
+  if (strlen(str) == 1 && str[0] == '\n') {
+    return 0;
+  }
+  
+  for(int i = 0; i < strlen(str) - 1; i++) {
+    if(str[i] < '0' || str[i] > '9' || str[i] == ' ') {
       return 0;
     }
   }
   return 1;
-}  
+}
 
 // Checks if the input is greater than 1 or not
 char checkInput(char c, int i) {
@@ -50,7 +54,7 @@ int main() {
     printf("\nAttempt %d\n", ++numberOfGuess);
 
     printf("\nPlease enter a number: ");
-    scanf("%s", input);
+    fgets(input, sizeof(input), stdin);
 
     if (isNumber(input)) {
       number = atoi(input);
