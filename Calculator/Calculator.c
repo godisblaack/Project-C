@@ -14,7 +14,7 @@ double isNumber(char* str) {
 
 double division(double a, double b) {
   if (b == 0) {
-    printf("\nInvalid Argument for Division\n");
+    printf("\n*** Invalid Argument for Division. ***\n");
     return 0;
   } else {
     return a / b;
@@ -23,7 +23,7 @@ double division(double a, double b) {
 
 double modulus(double a, double b) {
   if (b == 0) {
-    printf("\nInvalid Argument for Modulus\n");
+    printf("\n*** Invalid Argument for Modulus. ***\n");
     return 0;
   } else {
     return (int)a % (int)b;
