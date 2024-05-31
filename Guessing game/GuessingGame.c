@@ -7,7 +7,7 @@ int isNumber(char* str) {
   if (strlen(str) == 1 && str[0] == '\n') {
     return 0;
   }
-  
+
   for(int i = 0; i < strlen(str) - 1; i++) {
     if(str[i] < '0' || str[i] > '9' || str[i] == ' ') {
       return 0;
