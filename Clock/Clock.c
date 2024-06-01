@@ -8,7 +8,7 @@ void fillTime24(char *buffer, size_t size) {
   time(&rawTime);
   currentTime = localtime(&rawTime);
 
-  strftime(buffer, size, "%H:%M:%S", currentTime);
+  sprintf(buffer, "%02d:%02d:%02d", currentTime->tm_hour, currentTime->tm_min, currentTime->tm_sec);
 }
 
 void fillTime12(char *buffer, size_t size) {
@@ -18,7 +18,7 @@ void fillTime12(char *buffer, size_t size) {
   time(&rawTime);
   currentTime = localtime(&rawTime);
 
-  strftime(buffer, size, "%I:%M:%S", currentTime);
+  strftime(buffer, size, "%I:%M:%S %p", currentTime);
 }
 
 int main() {
@@ -28,7 +28,7 @@ int main() {
   printf("\nCurrent Time: %s\n", time);
 
   fillTime12(time, sizeof(time));
-  printf("\nCurrent Time: %s\n", time);
+  printf("\nCurrent Time: %s\n\n", time);
 
   return 0;
 }
