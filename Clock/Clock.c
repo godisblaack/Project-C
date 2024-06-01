@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 void fillTime24(char *buffer, size_t size) {
   time_t rawTime;
@@ -31,17 +33,31 @@ void fillDate(char *buffer, size_t size) {
   strftime(buffer, 100, "%A %B %d %Y", currentTime);
 }
 
+void clearScreen() {
+  #ifdef _WIN32
+    system("cls");
+  #else
+    system("clear");
+  #endif
+}
+
 int main() {
   char time[50], date[50];
 
-  fillTime24(time, sizeof(time));
-  printf("\nCurrent Time: %s\n", time);
+  while (1) {
+    clearScreen();
+    
+    fillTime24(time, sizeof(time));
+    printf("\nCurrent Time: %s\n", time);
 
-  fillTime12(time, sizeof(time));
-  printf("\nCurrent Time: %s\n", time);
+    fillTime12(time, sizeof(time));
+    printf("\nCurrent Time: %s\n", time);
 
-  fillDate(date, sizeof(date));
-  printf("\nDate: %s\n\n", date);
+    fillDate(date, sizeof(date));
+    printf("\nDate: %s\n\n", date);
+
+    sleep(1);
+  }
 
   return 0;
 }
